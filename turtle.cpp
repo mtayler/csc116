@@ -7,30 +7,35 @@ using namespace std;
 
 bool turtle_init ( turtle *t, int height, int width, const char *filename )
 {
-	try {
+	try
+	{
 		t->x = 0;
 		t->y = 0;
 		t->angle = 0;
 		t->penDown = true;
 
-		if (filename == NULL) {
+		if (filename == NULL)
+		{
 			t->writeToFile = false;
 		}
-		else {
+		else
+		{
 			t->writeToFile = true;
 			svg_file_init(&t->file, height, width, filename);
 		}
 
 		return true;
 	}
-	catch(...) {
+	catch(...)
+	{
 		return false;
 	}
 }
 
 void turtle_end ( turtle *t )
 {
-	if (t->writeToFile == true) {
+	if (t->writeToFile == true)
+	{
 		svg_file_end(&t->file);
 	}
 
@@ -58,7 +63,8 @@ void turtle_rotate_right(turtle *t, int degrees)
 {
 	t->angle = (t->angle - degrees);
 
-	if (t->angle < 0) {
+	if (t->angle < 0)
+	{
 		t->angle = (360 + t->angle);
 	}
 
@@ -78,7 +84,8 @@ void turtle_move_forward (turtle *t, int dist)
 	t->x += round(dx);
 	t->y += round(dy);
 
-	if (t->writeToFile == true && t->penDown == true) {
+	if (t->writeToFile == true && t->penDown == true)
+	{
 		svg_file_line(&t->file, x0, y0, t->x, t->y);
 	}
 }

@@ -89,34 +89,41 @@ int main (int argc, char **argv)
 		 * - the input file has been read, the contents have been placed in the lines array
 		 * - the turtle structure t has been initialized 
 		 */
-		for (int i=0; i < linecount; i++) {
+		for (int i=0; i < linecount; i++)
+		{
 			string line, command;
-			
+
 			line = lines[i];
-			
-		command = line.substr(0,line.find(" "));
+
+			command = line.substr(0,line.find(" "));
 
 			cout << line.substr(line.find(" "), -1) << endl;
 
-			if (command.compare("pen") == 0) {
-				if (line.substr(line.find(" "), -1).compare(" down") == 0) {
+			if (command.compare("pen") == 0)
+			{
+				if (line.substr(line.find(" "), -1).compare(" down") == 0)
+				{
 					cout << "Pen down" << endl;
 					turtle_pen_down(&t);
 				}
-				else {
+				else
+				{
 					turtle_pen_up(&t);
 					cout << "Pen up" << endl;
 				}
 			}
-			else if (command.compare("forward") == 0) {
+			else if (command.compare("forward") == 0)
+			{
 				turtle_move_forward(&t, getValue(line, line.find(" ")));
 				cout << "Moving forward " << getValue(line, line.find(" ")) << endl;
 			}
-			else if (command.compare("left") == 0) {
+			else if (command.compare("left") == 0)
+			{
 				turtle_rotate_right(&t, getValue(line, line.find(" ")));
 				cout << "Turning left " << getValue(line, line.find(" ")) << endl;
 			}
-			else {
+			else
+			{
 				turtle_rotate_left(&t, getValue(line, line.find(" ")));
 				cout << "Turning right " << getValue(line, line.find(" ")) << endl;
 			}
