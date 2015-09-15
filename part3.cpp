@@ -63,8 +63,94 @@ int getValue (string s, int pos)
 	return atoi(s.substr(pos).c_str());
 }
 
-int execute(string[] commands, int value) {
+void execute(turtle *t, string line)
+{
+	string command;
 
+	command = line.substr(0,line.find(" "));
+
+	if (command.compare("pen") == 0) {
+		if (line.substr(line.find(" "), -1).compare(" down") == 0) {
+			cout << "Pen down" << endl;
+			turtle_pen_down(t);
+		}
+		else {
+			turtle_pen_up(t);
+			cout << "Pen up" << endl;
+		}
+	}
+	else if (command.compare("forward") == 0) {
+		turtle_move_forward(t, getValue(line, line.find(" ")));
+		cout << "Moving forward " << getValue(line, line.find(" ")+1) << endl;
+	}
+	else if (command.compare("left") == 0) {
+		turtle_rotate_right(t, getValue(line, line.find(" ")));
+		cout << "Turning left " << getValue(line, line.find(" ")) << endl;
+	}
+	else if (command.compare("right") == 0) {
+		turtle_rotate_left(t, getValue(line, line.find(" ")));
+		cout << "Turning right " << getValue(line, line.find(" ")) << endl;
+	}
+}
+
+/*
+ * Essentially a wrapper to handle repeats. Once called with the original data, the function will
+ * recursively call itself to handle repeats.
+ */
+void parse_lines(turtle *t, string lines[], int num_lines)
+{
+	bool capture=0;   				// becomes true if repeat is encountered and lines need to be remembered
+	int reps;						// number of times to repeat code
+	int scope=0;					// method of tracking which braces belong together
+	string line;
+	string rep_lines[MAXLINES];		// storage for lines to be repeated
+	int num_rep_lines;				// tracks number of lines stored
+
+	for (int i=0; i < num_lines; i++) {
+		line = lines[i];
+
+		if (line.substr(0, line.find(" ")).compare("repeat") == 0) {
+			if (scope < 1) {
+				reps = getValue(line, line.find(" "));
+				num_rep_lines = 0;
+				capture = true;
+				continue;		// current command dealt with, and doesn't need to be captured: thus jump to next line
+			}
+		}
+
+		if (capture) {
+			if (line.compare("{") == 0) {		// on opening curly brace, scope goes down 1 level
+				scope++;
+
+				if (scope > 1) {
+					rep_lines[num_rep_lines] = line;
+					num_rep_lines++;
+				}
+			}
+			else if (line.compare("}") == 0) {	// on closing brace, scope goes up 1 level
+				scope--;
+				
+				if (scope < 1) {			// if scope < 1, done capturing. Move to parsing captured lines
+					capture = false;
+					for (int r=0; r < reps; r++) {
+						parse_lines(t, rep_lines, num_rep_lines);
+					}
+				}
+				else {
+					rep_lines[num_rep_lines] = line;
+					num_rep_lines++;
+				}
+			}
+			else {	
+				rep_lines[num_rep_lines] = line;
+				num_rep_lines++;
+			}
+		}
+		else if (!capture) { 		// if not capturing, just run
+			execute(t, line);
+		}
+	}
+}
 
 int main (int argc, char **argv)
 {
@@ -92,42 +178,10 @@ int main (int argc, char **argv)
 		 * - the input file has been read, the contents have been placed in the lines array
 		 * - the turtle structure t has been initialized 
 		 */
-		for (int i=0; i < linecount; i++) {
-			string line, command;
-      string[] repeat;
-      int repetitions;
-			
-			line = lines[i];
-			
-      command = line.substr(0,line.find(" "));
 
-			cout << line.substr(line.find(" "), -1) << endl;
-
-			if (command.compare("pen") == 0) {
-				if (line.substr(line.find(" "), -1).compare(" down") == 0) {
-					cout << "Pen down" << endl;
-					turtle_pen_down(&t);
-				}
-				else {
-					turtle_pen_up(&t);
-					cout << "Pen up" << endl;
-				}
-			}
-			else if (command.compare("forward") == 0) {
-				turtle_move_forward(&t, getValue(line, line.find(" ")));
-				cout << "Moving forward " << getValue(line, line.find(" ")) << endl;
-			}
-			else if (command.compare("left") == 0) {
-				turtle_rotate_right(&t, getValue(line, line.find(" ")));
-				cout << "Turning left " << getValue(line, line.find(" ")) << endl;
-			}
-			else if (command.compare("right") == 0) {
-				turtle_rotate_left(&t, getValue(line, line.find(" ")));
-				cout << "Turning right " << getValue(line, line.find(" ")) << endl;
-			}
-      else if (command.compare("repeat") == 0) {
-        repetitions = getValue(line, line.find(" ")
-		}
+		/* essentially a wrapper to deal with repeats. Recursively calls in the event of a repeat, otherwise passes
+		 * current line to `execute` to execute given command */
+		parse_lines(&t, lines, linecount);
 
 		turtle_end(&t);
 
