@@ -114,11 +114,11 @@ int main (int argc, char **argv)
 			}
 			else if (command.compare("left") == 0)
 			{
-				turtle_rotate_right(&t, getValue(line, line.find(" ")));
+				turtle_rotate_left(&t, getValue(line, line.find(" ")));
 			}
 			else
 			{
-				turtle_rotate_left(&t, getValue(line, line.find(" ")));
+				turtle_rotate_right(&t, getValue(line, line.find(" ")));
 			}
 		}
 

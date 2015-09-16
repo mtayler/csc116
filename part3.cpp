@@ -86,11 +86,11 @@ void execute(turtle *t, string line)
 	}
 	else if (command.compare("left") == 0)
 	{
-		turtle_rotate_right(t, getValue(line, line.find(" ")));
+		turtle_rotate_left(t, getValue(line, line.find(" ")));
 	}
 	else if (command.compare("right") == 0)
 	{
-		turtle_rotate_left(t, getValue(line, line.find(" ")));
+		turtle_rotate_right(t, getValue(line, line.find(" ")));
 	}
 }
 
