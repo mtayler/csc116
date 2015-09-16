@@ -73,29 +73,24 @@ void execute(turtle *t, string line)
 	{
 		if (line.substr(line.find(" "), -1).compare(" down") == 0)
 		{
-			cout << "Pen down" << endl;
 			turtle_pen_down(t);
 		}
 		else
 		{
 			turtle_pen_up(t);
-			cout << "Pen up" << endl;
 		}
 	}
 	else if (command.compare("forward") == 0)
 	{
 		turtle_move_forward(t, getValue(line, line.find(" ")));
-		cout << "Moving forward " << getValue(line, line.find(" ")+1) << endl;
 	}
 	else if (command.compare("left") == 0)
 	{
 		turtle_rotate_right(t, getValue(line, line.find(" ")));
-		cout << "Turning left " << getValue(line, line.find(" ")) << endl;
 	}
 	else if (command.compare("right") == 0)
 	{
 		turtle_rotate_left(t, getValue(line, line.find(" ")));
-		cout << "Turning right " << getValue(line, line.find(" ")) << endl;
 	}
 }
 
@@ -105,12 +100,12 @@ void execute(turtle *t, string line)
  */
 void parse_lines(turtle *t, string lines[], int num_lines)
 {
-	bool capture=0;   				// becomes true if repeat is encountered and lines need to be remembered
-	int reps;						// number of times to repeat code
-	int scope=0;					// method of tracking which braces belong together
+	bool capture=0;   							// becomes true if repeat is encountered and lines need to be remembered
+	short reps;									// number of times to repeat code
+	short scope=0;								// method of tracking which braces belong together
 	string line;
-	string rep_lines[MAXLINES];		// storage for lines to be repeated
-	int num_rep_lines;				// tracks number of lines stored
+	string* rep_lines = new string[MAXLINES];	// storage for lines to be repeated
+	short num_rep_lines;						// tracks number of lines stored
 
 	for (int i=0; i < num_lines; i++)
 	{

@@ -61,14 +61,14 @@ void turtle_rotate_left (turtle *t, int degrees)
 
 void turtle_rotate_right(turtle *t, int degrees)
 {
-	t->angle = (t->angle - degrees);
+	int angle = (t->angle - degrees) % 360;
 
-	if (t->angle < 0)
+	if (angle < 0)
 	{
-		t->angle = (360 + t->angle);
+		angle = 360 - abs(angle);
 	}
 
-	t->angle = t->angle % 360;
+	t->angle = angle;
 }
 
 void turtle_move_forward (turtle *t, int dist)
