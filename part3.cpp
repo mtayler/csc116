@@ -98,16 +98,17 @@ void execute(turtle *t, string line)
  * Essentially a wrapper to handle repeats. Once called with the original data, the function will
  * recursively call itself to handle repeats.
  */
-void parse_lines(turtle *t, string lines[], int num_lines)
+void parse_lines(turtle *t, string lines[], short start, short end)
 {
 	bool capture=0;   							// becomes true if repeat is encountered and lines need to be remembered
-	short reps;									// number of times to repeat code
+	uint8_t reps;									// number of times to repeat code
 	short scope=0;								// method of tracking which braces belong together
+	short next_start;
 	string line;
-	string* rep_lines = new string[MAXLINES];	// storage for lines to be repeated
+	//string* rep_lines = new string[MAXLINES];	// storage for lines to be repeated
 	short num_rep_lines;						// tracks number of lines stored
 
-	for (int i=0; i < num_lines; i++)
+	for (short i=start; i < end; i++)
 	{
 		line = lines[i];
 
@@ -128,9 +129,12 @@ void parse_lines(turtle *t, string lines[], int num_lines)
 			{
 				scope++;
 
-				if (scope > 1)
+				if (scope <= 1) {
+					next_start = i+1;		// don't read curly brace, part of current lines
+				}
+				else if (scope > 1)
 				{
-					rep_lines[num_rep_lines] = line;
+					//rep_lines[num_rep_lines] = line;
 					num_rep_lines++;
 				}
 			}
@@ -141,20 +145,21 @@ void parse_lines(turtle *t, string lines[], int num_lines)
 				if (scope < 1)			// if scope < 1, done capturing. Move to parsing captured lines
 				{
 					capture = false;
-					for (int r=0; r < reps; r++)
+					for (char r=0; r < reps; r++)
 					{
-						parse_lines(t, rep_lines, num_rep_lines);
+						parse_lines(t, lines, next_start, next_start+num_rep_lines);
 					}
+					//delete rep_lines;
 				}
 				else
 				{
-					rep_lines[num_rep_lines] = line;
+					//rep_lines[num_rep_lines] = line;
 					num_rep_lines++;
 				}
 			}
 			else
 			{	
-				rep_lines[num_rep_lines] = line;
+				//rep_lines[num_rep_lines] = line;
 				num_rep_lines++;
 			}
 		}
@@ -187,14 +192,9 @@ int main (int argc, char **argv)
 		turtle t;
 		turtle_init (&t, 500, 500, (filename + ".svg").c_str());
 
-		/* Place your code here.  At this point:
-		 * - the input file has been read, the contents have been placed in the lines array
-		 * - the turtle structure t has been initialized 
-		 */
-
 		/* essentially a wrapper to deal with repeats. Recursively calls in the event of a repeat, otherwise passes
 		 * current line to `execute` to execute given command */
-		parse_lines(&t, lines, linecount);
+		parse_lines(&t, lines, 0, linecount);
 
 		turtle_end(&t);
 

@@ -20,7 +20,23 @@ all: 1 2 3 bonus
 bonus:
 	$(CXX) $(LDFLAGS) $(CXXFLAGS) $(SOURCES) bonus.cpp -g -o bonus
 
+prod: prod1 prod2 prod3 prodbonus
+
+prod1:
+	$(CXX) $(LDFLAGS) $(CXXFLAGS) $(SOURCES) part1_tester.cpp -o part1
+
+prod2:
+	$(CXX) $(LDFLAGS) $(CXXFLAGS) $(SOURCES) part2.cpp -o part2
+
+prod3:
+	$(CXX) $(LDFLAGS) $(CXXFLAGS) $(SOURCES) part3.cpp -o part3
+
+.PHONY: prodbonus
+prodbonus:
+	$(CXX) $(LDFLAGS) $(CXXFLAGS) $(SOURCES) bonus.cpp -o bonus
+
 .PHONY: clean
 clean:
 	-rm -fr *.dSYM
 	-rm -f part1 part2 part3 bonus
+	-rm -f *.svg
