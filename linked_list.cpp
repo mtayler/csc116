@@ -50,7 +50,7 @@ linked_list::linked_list()
 
 linked_list::~linked_list()
 {
-	if (m_tail != NULL && m_size > 0) { // if m_tail is NULL, list is already empty
+	if (m_tail != NULL && m_head != NULL && m_size > 0) { 		// if m_tail is NULL, list should already be empty
 		node *p = m_tail;
 
 		while(p->prev != NULL) {
@@ -59,16 +59,29 @@ linked_list::~linked_list()
 		}
 		delete p;
 	}
+	else if (!(m_tail == NULL && m_head == NULL && m_size == 0)) {
+		std::cerr << " m_head = " << m_head << ", m_tail = " << m_tail << ", m_size = " << m_size << std::endl;
+	}
+
+	m_head = NULL;
+	m_tail = NULL;
+
+	m_size = 0;
 }
 
 void linked_list::clear()
 {
-	node* p = m_tail;
-	while (p->prev) {
-		p = p->prev;
-		delete p->next;
+	if (m_tail != NULL && m_size > 0) { 		// if m_tail is NULL, list is already empty
+		node *p = m_tail;
+
+		while(p->prev != NULL) {
+			p = p->prev;
+			delete p->next;
+		}
+		delete p;
 	}
-	delete p;
+	m_head = NULL;
+	m_tail = NULL;
 
 	m_size = 0;
 }
@@ -101,7 +114,7 @@ void linked_list::insert_front(const int value)
 void linked_list::insert_end(const int value)
 {
 	node* p = new node(m_tail, value, NULL);
-	if (m_head != NULL && m_tail != NULL) {
+	if (m_tail != NULL) {
 		m_tail->next = p;
 	}
 	else {
@@ -116,14 +129,28 @@ void linked_list::insert_end(const int value)
 void linked_list::insert(const int value, const unsigned int pos)
 {
 	node* t;
+	node *p = new node(NULL, value, NULL);
 
-	t = m_head;
-	for (int i=1; i < pos; i++) {
-		t = t->next;
+	if (pos == 0) {			// start of list
+		p->next = m_head;
+		m_head->prev = p;
+		m_head = p;
+	}
+	else {
+		t = m_head;
+		for (int i=1; i < pos; i++) {
+			t = t->next;
+		}
+
+		p->prev = t;
+		p->next = t->next;
+		t->next = p;
+		t->next->prev = p;
 	}
 
-	node* p = new node(t, value, t->next);
-	t->next = p;
+	if (p->next == NULL) {
+		m_tail = p;
+	}
 
 	m_size++;
 }
@@ -153,7 +180,18 @@ int linked_list::remove_front()
 {
 	node* t;
 	t = m_head;
-	m_head = m_head->next;
+
+	if (m_head != NULL) {
+		m_head = m_head->next;
+	}
+	
+	if (m_head == NULL) {
+		m_tail = NULL;
+	}
+	else {
+		m_head->prev = NULL;
+	}
+
 
 	int removed = t->value;
 	delete t;
@@ -166,11 +204,18 @@ int linked_list::remove_end()
 {
 	node* t;
 	t = m_tail;
-	m_tail = m_tail->prev;
+
+	if (m_tail != NULL) {
+		m_tail = m_tail->prev;
+	}
+	
 
 	/* if list now empty, set m_head to reflect */
 	if (m_tail == NULL) {
 		m_head = NULL;
+	}
+	else {
+		m_tail->next = NULL;
 	}
 
 	int removed = t->value;
@@ -187,6 +232,11 @@ int linked_list::remove(const unsigned int pos)
 	t = m_head;
 	for (int i=0; i < pos; i++) {
 		t = t->next;
+	}
+
+	if (t->prev == NULL && t->next == NULL) {		// list has 1 element, m_head and m_tail should become NULL after removal
+		m_head = NULL;
+		m_tail = NULL;
 	}
 
 	/* if node before t is NULL, node after t becomes head */
@@ -210,23 +260,29 @@ int linked_list::remove(const unsigned int pos)
 	m_size--;
 
 	return removed;
+
 }
 
 void linked_list::bubble_sort()
 {
-	/* This implementation is very slow
-	 * It can be improved by iterating over the list to make
-	 * swaps instead of calling get_node */
 	bool swap_made = true;
+	node* currentNode = NULL;
+	node* nextNode = NULL;
 
 	while(swap_made)
 	{
+		currentNode = m_head;
+		if (currentNode != NULL) {
+			nextNode = currentNode->next;
+		}
+
+		if (nextNode == NULL) {			// list of length < 2 is already sorted
+			return;
+		}
 
 		swap_made = false;
-		for (unsigned int i = 0; i < m_size - 1; i++)
+		while (nextNode != NULL)
 		{
-			node *currentNode = get_node(i);
-			node *nextNode = get_node(i+1);
 			if ( currentNode->value > nextNode->value )
 			{
 				int temp = currentNode->value;
@@ -234,6 +290,8 @@ void linked_list::bubble_sort()
 				nextNode->value = temp;
 				swap_made = true;
 			}
+			currentNode = nextNode;
+			nextNode = currentNode->next;
 		}
 	}
 }
@@ -253,7 +311,8 @@ std::ostream & operator<< (std::ostream &s, const linked_list &l)
 	return s;
 }
 
-void linked_list::print() {
+void linked_list::print()
+{
 	std::cout << "{";
 	node* p = m_head;
 	while (p != NULL) {
@@ -266,9 +325,11 @@ void linked_list::print() {
 	std::cout << "}" << std::endl;
 }
 
-
 node* linked_list::get_node(const unsigned int pos)
 {
-	//Erroneous return value (to prevent a compiler error)
-	return NULL;
+	node* t = m_head;
+	for (int i=0; i < pos; i++) {
+		t = t->next;
+	}
+	return t;
 }
