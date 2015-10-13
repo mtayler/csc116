@@ -50,7 +50,7 @@ linked_list::linked_list()
 
 linked_list::~linked_list()
 {
-	if (m_tail != NULL && m_head != NULL && m_size > 0) { 		// if m_tail is NULL, list should already be empty
+	if (m_tail != NULL && m_head != NULL && m_size > 0) { 				// if m_tail is NULL, list should already be empty
 		node *p = m_tail;
 
 		while(p->prev != NULL) {
@@ -59,7 +59,7 @@ linked_list::~linked_list()
 		}
 		delete p;
 	}
-	else if (!(m_tail == NULL && m_head == NULL && m_size == 0)) {
+	else if (!(m_tail == NULL && m_head == NULL && m_size == 0)) {		// something done fucked
 		std::cerr << " m_head = " << m_head << ", m_tail = " << m_tail << ", m_size = " << m_size << std::endl;
 	}
 
