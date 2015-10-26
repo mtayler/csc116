@@ -38,43 +38,41 @@ int vector_count_values (vector<int> &theList, int value)
 int list_max (list<int> &theList)
 {
 	int max = INT_MIN;
-
 	list<int>::iterator i = theList.begin();
 
 	while (i != theList.end()) {
 		if (*i > max) {
 			max = *i;
 		}
+		i++;
 	}
-
 	return max;
 }
 
 int list_min (list<int> &theList)
 {
 	int min = INT_MAX;
-
 	list<int>::iterator i = theList.begin();
 
 	while (i != theList.end()) {
 		if (*i < min) {
 			min = *i;
 		}
+		i++;
 	}
-
 	return min;
 }
 
 int list_count_values (list<int> &theList, int value)
 {
 	unsigned int count = 0;
-
 	list<int>::iterator i = theList.begin();
 
 	while (i != theList.end()) {
 		if (*i == value) {
 			count++;
 		}
+		i++;
 	}
 	return count;
 }
