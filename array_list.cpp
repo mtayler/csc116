@@ -46,7 +46,7 @@ void array_list::insert_front(const int value)
 
 	// copy all values in m_arraystorage to new_array shifted one index forward
 	int* new_array = new int[m_capacity];
-	for (unsigned int i=0; i < m_capacity; i++) {
+	for (unsigned int i=0; i < m_size; i++) {
 		new_array[i+1] = m_arraystorage[i];
 	}
 
