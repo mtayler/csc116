@@ -1,0 +1,72 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+UVIC_CSC116_LAB5_MEASUREMENT_LIST_INCLUDED	measurement_list.hpp	/^#define UVIC_CSC116_LAB5_MEASUREMENT_LIST_INCLUDED$/;"	d
+data	measurement_list.hpp	/^    measurement data;$/;"	m	class:node	access:public
+find	measurement_list.cpp	/^measurement * measurement_list::find ( float time ) const$/;"	f	class:measurement_list	signature:( float time ) const
+find	measurement_list.hpp	/^    measurement * find ( float time ) const;$/;"	p	class:measurement_list	access:public	signature:( float time ) const
+insert	measurement_list.cpp	/^void measurement_list::insert( const measurement & m )$/;"	f	class:measurement_list	signature:( const measurement & m )
+insert	measurement_list.hpp	/^    void insert( const measurement & m );$/;"	p	class:measurement_list	access:public	signature:( const measurement & m )
+m_head	measurement_list.hpp	/^    node *m_head;$/;"	m	class:measurement_list	access:private
+m_size	measurement_list.hpp	/^    int m_size;$/;"	m	class:measurement_list	access:private
+main	test.cpp	/^int main(void) {$/;"	f	signature:(void)
+measurement	measurement_list.cpp	/^measurement::measurement()$/;"	f	class:measurement	signature:()
+measurement	measurement_list.cpp	/^measurement::measurement(float time, float value)$/;"	f	class:measurement	signature:(float time, float value)
+measurement	measurement_list.hpp	/^    measurement();$/;"	p	class:measurement	access:public	signature:()
+measurement	measurement_list.hpp	/^    measurement(float time, float value);$/;"	p	class:measurement	access:public	signature:(float time, float value)
+measurement	measurement_list.hpp	/^class measurement$/;"	c
+measurement::measurement	measurement_list.cpp	/^measurement::measurement()$/;"	f	class:measurement	signature:()
+measurement::measurement	measurement_list.cpp	/^measurement::measurement(float time, float value)$/;"	f	class:measurement	signature:(float time, float value)
+measurement::measurement	measurement_list.hpp	/^    measurement();$/;"	p	class:measurement	access:public	signature:()
+measurement::measurement	measurement_list.hpp	/^    measurement(float time, float value);$/;"	p	class:measurement	access:public	signature:(float time, float value)
+measurement::time	measurement_list.hpp	/^    float time;$/;"	m	class:measurement	access:public
+measurement::value	measurement_list.hpp	/^    float value;$/;"	m	class:measurement	access:public
+measurement_list	measurement_list.cpp	/^measurement_list::measurement_list()$/;"	f	class:measurement_list	signature:()
+measurement_list	measurement_list.hpp	/^    measurement_list();$/;"	p	class:measurement_list	access:public	signature:()
+measurement_list	measurement_list.hpp	/^    measurement_list(const measurement_list & other);$/;"	p	class:measurement_list	access:private	signature:(const measurement_list & other)
+measurement_list	measurement_list.hpp	/^class measurement_list$/;"	c
+measurement_list::find	measurement_list.cpp	/^measurement * measurement_list::find ( float time ) const$/;"	f	class:measurement_list	signature:( float time ) const
+measurement_list::find	measurement_list.hpp	/^    measurement * find ( float time ) const;$/;"	p	class:measurement_list	access:public	signature:( float time ) const
+measurement_list::insert	measurement_list.cpp	/^void measurement_list::insert( const measurement & m )$/;"	f	class:measurement_list	signature:( const measurement & m )
+measurement_list::insert	measurement_list.hpp	/^    void insert( const measurement & m );$/;"	p	class:measurement_list	access:public	signature:( const measurement & m )
+measurement_list::m_head	measurement_list.hpp	/^    node *m_head;$/;"	m	class:measurement_list	access:private
+measurement_list::m_size	measurement_list.hpp	/^    int m_size;$/;"	m	class:measurement_list	access:private
+measurement_list::measurement_list	measurement_list.cpp	/^measurement_list::measurement_list()$/;"	f	class:measurement_list	signature:()
+measurement_list::measurement_list	measurement_list.hpp	/^    measurement_list();$/;"	p	class:measurement_list	access:public	signature:()
+measurement_list::measurement_list	measurement_list.hpp	/^    measurement_list(const measurement_list & other);$/;"	p	class:measurement_list	access:private	signature:(const measurement_list & other)
+measurement_list::operator <<	measurement_list.hpp	/^    friend std::ostream & operator<< (std::ostream & stream,$/;"	p	class:measurement_list	access:friend	signature:(std::ostream & stream, const measurement_list & list)
+measurement_list::operator =	measurement_list.hpp	/^    measurement_list & operator= (measurement_list & other);$/;"	p	class:measurement_list	access:private	signature:(measurement_list & other)
+measurement_list::remove_earlier_than	measurement_list.cpp	/^void measurement_list::remove_earlier_than( float time )$/;"	f	class:measurement_list	signature:( float time )
+measurement_list::remove_earlier_than	measurement_list.hpp	/^    void remove_earlier_than( float time );$/;"	p	class:measurement_list	access:public	signature:( float time )
+measurement_list::remove_smaller_than	measurement_list.cpp	/^void measurement_list::remove_smaller_than( float value )$/;"	f	class:measurement_list	signature:( float value )
+measurement_list::remove_smaller_than	measurement_list.hpp	/^    void remove_smaller_than( float value );$/;"	p	class:measurement_list	access:public	signature:( float value )
+measurement_list::size	measurement_list.cpp	/^int measurement_list::size()$/;"	f	class:measurement_list	signature:()
+measurement_list::size	measurement_list.hpp	/^    int size();$/;"	p	class:measurement_list	access:public	signature:()
+measurement_list::~measurement_list	measurement_list.cpp	/^measurement_list::~measurement_list()$/;"	f	class:measurement_list	signature:()
+measurement_list::~measurement_list	measurement_list.hpp	/^    ~measurement_list();$/;"	p	class:measurement_list	access:public	signature:()
+next	measurement_list.hpp	/^    node *next;$/;"	m	class:node	access:public
+node	measurement_list.hpp	/^    node( const measurement & m, node *n ) $/;"	f	class:node	access:public	signature:( const measurement & m, node *n )
+node	measurement_list.hpp	/^    node()$/;"	f	class:node	access:public	signature:()
+node	measurement_list.hpp	/^class node$/;"	c
+node::data	measurement_list.hpp	/^    measurement data;$/;"	m	class:node	access:public
+node::next	measurement_list.hpp	/^    node *next;$/;"	m	class:node	access:public
+node::node	measurement_list.hpp	/^    node( const measurement & m, node *n ) $/;"	f	class:node	access:public	signature:( const measurement & m, node *n )
+node::node	measurement_list.hpp	/^    node()$/;"	f	class:node	access:public	signature:()
+operator <<	measurement_list.cpp	/^ostream & operator<< (ostream & stream, const measurement & m)$/;"	f	signature:(ostream & stream, const measurement & m)
+operator <<	measurement_list.cpp	/^ostream & operator<< (ostream & stream, const measurement_list & list)$/;"	f	signature:(ostream & stream, const measurement_list & list)
+operator <<	measurement_list.hpp	/^    friend std::ostream & operator<< (std::ostream & stream,$/;"	p	class:measurement_list	access:friend	signature:(std::ostream & stream, const measurement_list & list)
+operator <<	measurement_list.hpp	/^std::ostream & operator<< (std::ostream & stream, const measurement & m);$/;"	p	signature:(std::ostream & stream, const measurement & m)
+operator =	measurement_list.hpp	/^    measurement_list & operator= (measurement_list & other);$/;"	p	class:measurement_list	access:private	signature:(measurement_list & other)
+remove_earlier_than	measurement_list.cpp	/^void measurement_list::remove_earlier_than( float time )$/;"	f	class:measurement_list	signature:( float time )
+remove_earlier_than	measurement_list.hpp	/^    void remove_earlier_than( float time );$/;"	p	class:measurement_list	access:public	signature:( float time )
+remove_smaller_than	measurement_list.cpp	/^void measurement_list::remove_smaller_than( float value )$/;"	f	class:measurement_list	signature:( float value )
+remove_smaller_than	measurement_list.hpp	/^    void remove_smaller_than( float value );$/;"	p	class:measurement_list	access:public	signature:( float value )
+size	measurement_list.cpp	/^int measurement_list::size()$/;"	f	class:measurement_list	signature:()
+size	measurement_list.hpp	/^    int size();$/;"	p	class:measurement_list	access:public	signature:()
+time	measurement_list.hpp	/^    float time;$/;"	m	class:measurement	access:public
+value	measurement_list.hpp	/^    float value;$/;"	m	class:measurement	access:public
+~measurement_list	measurement_list.cpp	/^measurement_list::~measurement_list()$/;"	f	class:measurement_list	signature:()
+~measurement_list	measurement_list.hpp	/^    ~measurement_list();$/;"	p	class:measurement_list	access:public	signature:()
