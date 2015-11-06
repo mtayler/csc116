@@ -1,0 +1,108 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CSC116_A2_PART2_H_	part2.h	/^#define CSC116_A2_PART2_H_$/;"	d
+CSC116_STACK_H	sll_stack.h	/^#define CSC116_STACK_H$/;"	d
+CSC116_STACK_H	vector_stack.h	/^#define CSC116_STACK_H$/;"	d
+CXXFLAGS	Makefile	/^CXXFLAGS=-Wall -Werror -pedantic$/;"	m
+EXECUTABLEPART2	Makefile	/^EXECUTABLEPART2=part2$/;"	m
+EXECUTABLESLL	Makefile	/^EXECUTABLESLL=sll_stack$/;"	m
+EXECUTABLEVECTOR	Makefile	/^EXECUTABLEVECTOR=vector_stack$/;"	m
+LDFLAGS	Makefile	/^LDFLAGS=$/;"	m
+SOURCESPART2	Makefile	/^SOURCESPART2=part2.cpp part2_tester.cpp$/;"	m
+SOURCESSLL	Makefile	/^SOURCESSLL=sll_stack_tester.cpp$/;"	m
+SOURCESVECTOR	Makefile	/^SOURCESVECTOR=vector_stack_tester.cpp$/;"	m
+_line	part2_tester.cpp	/^		unsigned int _line;$/;"	m	class:part2_tester_exception	file:
+_line	sll_stack.h	/^		unsigned int	_line;$/;"	m	class:stack_empty_exception
+_line	sll_stack_tester.cpp	/^		unsigned int _line;$/;"	m	class:stack_tester_exception	file:
+_line	vector_stack.h	/^		unsigned int	_line;$/;"	m	class:stack_empty_exception
+_line	vector_stack_tester.cpp	/^		unsigned int _line;$/;"	m	class:stack_tester_exception	file:
+_msg	part2_tester.cpp	/^		string _msg;$/;"	m	class:part2_tester_exception	file:
+_msg	sll_stack.h	/^		string			_msg;$/;"	m	class:stack_empty_exception
+_msg	sll_stack_tester.cpp	/^		string _msg;$/;"	m	class:stack_tester_exception	file:
+_msg	vector_stack.h	/^		string			_msg;$/;"	m	class:stack_empty_exception
+_msg	vector_stack_tester.cpp	/^		string _msg;$/;"	m	class:stack_tester_exception	file:
+allocate_storage	vector_stack.h	/^	void allocate_storage(unsigned int size)$/;"	f	class:vector_stack
+clear	sll_stack.h	/^	void clear()$/;"	f	class:sll_stack
+clear	vector_stack.h	/^	void clear()$/;"	f	class:vector_stack
+empty	sll_stack.h	/^	bool		empty() const$/;"	f	class:sll_stack
+empty	vector_stack.h	/^	bool		empty() const$/;"	f	class:vector_stack
+g_growFactor	vector_stack.h	/^static const unsigned int g_growFactor = 2;$/;"	v
+g_initialsize	vector_stack.h	/^static const unsigned int g_initialsize = 2;$/;"	v
+grow_and_copy_storage	vector_stack.h	/^	void grow_and_copy_storage()$/;"	f	class:vector_stack
+input	sll_stack_tester.cpp	/^unsigned int input[] = {1,2,3,4,5,6,7,8};$/;"	v
+input	vector_stack_tester.cpp	/^unsigned int input[] = {1,2,3,4,5,6,7,8};$/;"	v
+m_capacity	vector_stack.h	/^	unsigned int 	m_capacity;$/;"	m	class:vector_stack
+m_next	sll_stack.h	/^		node *	m_next;$/;"	m	class:node
+m_size	sll_stack.h	/^	unsigned int	m_size;$/;"	m	class:sll_stack
+m_size	vector_stack.h	/^	unsigned int	m_size;$/;"	m	class:vector_stack
+m_storage	vector_stack.h	/^	T *	m_storage;$/;"	m	class:vector_stack
+m_top	sll_stack.h	/^	node<T>*		m_top;$/;"	m	class:sll_stack
+m_top	vector_stack.h	/^	unsigned int 	m_top;$/;"	m	class:vector_stack
+m_value	sll_stack.h	/^		T		m_value;$/;"	m	class:node
+main	part2_tester.cpp	/^int main ()$/;"	f
+main	sll_stack_tester.cpp	/^int main ()$/;"	f
+main	vector_stack_tester.cpp	/^int main ()$/;"	f
+match_brackets	part2.cpp	/^bool match_brackets (char* str)$/;"	f
+node	sll_stack.h	/^		node( T val, node *nxt ) : $/;"	f	class:node
+node	sll_stack.h	/^		node() : m_value(0), m_next(0) {}$/;"	f	class:node
+node	sll_stack.h	/^class node$/;"	c
+operator <<	sll_stack.h	/^	friend std::ostream & operator<< (std::ostream &s, const sll_stack &stk)$/;"	f	class:sll_stack
+operator <<	vector_stack.h	/^	friend std::ostream & operator<< (std::ostream &s, const vector_stack<T> &v)$/;"	f	class:vector_stack
+part2_tester_exception	part2_tester.cpp	/^		part2_tester_exception (const string & msg, unsigned int line) : _msg(msg), _line(line) {}$/;"	f	class:part2_tester_exception
+part2_tester_exception	part2_tester.cpp	/^class part2_tester_exception$/;"	c	file:
+peek	sll_stack.h	/^	T peek()$/;"	f	class:sll_stack
+peek	vector_stack.h	/^	T peek()$/;"	f	class:vector_stack
+pop	sll_stack.h	/^	T 	pop()$/;"	f	class:sll_stack
+pop	vector_stack.h	/^	T pop()$/;"	f	class:vector_stack
+print_switch_ops	part2.cpp	/^void print_switch_ops (list<string> &ops) {$/;"	f
+push	sll_stack.h	/^	void	push(const int val)$/;"	f	class:sll_stack
+push	vector_stack.h	/^	void	push(const T val)$/;"	f	class:vector_stack
+railway	part2.cpp	/^bool railway (vector<int> cars, list<string> &moves)$/;"	f
+railway0	part2_tester.cpp	/^int railway0[] = {5,4,3,2,1};	\/\/true$/;"	v
+railway1	part2_tester.cpp	/^int railway1[] = {1,3,5,4,2};	\/\/true$/;"	v
+railway2	part2_tester.cpp	/^int railway2[] = {4,3,5,1,2};	\/\/false  - cannot do with only one spur$/;"	v
+railway3	part2_tester.cpp	/^int railway3[] = {1,4,4,2,3}; 	\/\/false  - duplicate entry$/;"	v
+railway4	part2_tester.cpp	/^int railway4[] = {1,5,2,3,6};	\/\/false	 - wrong entry$/;"	v
+railway5	part2_tester.cpp	/^int railway5[] = {5,4,7,8,6,3,2,1};  \/\/true  - can do with one spur$/;"	v
+res0	part2_tester.cpp	/^string res0[] = {"in->spur","in->spur","in->spur","in->spur","in->out",$/;"	v
+res1	part2_tester.cpp	/^string res1[] = {"in->spur","in->spur","in->out","spur->out","in->out","spur->out",$/;"	v
+res5	part2_tester.cpp	/^string res5[] = {"in->spur","in->spur","in->spur","in->spur","in->out","in->out",$/;"	v
+size	sll_stack.h	/^	unsigned int	size() const$/;"	f	class:sll_stack
+size	vector_stack.h	/^	unsigned int	size() const$/;"	f	class:vector_stack
+sll_stack	sll_stack.h	/^	sll_stack()$/;"	f	class:sll_stack
+sll_stack	sll_stack.h	/^	sll_stack(vector<T> &vec)$/;"	f	class:sll_stack
+sll_stack	sll_stack.h	/^class sll_stack$/;"	c
+stack_empty_exception	sll_stack.h	/^		stack_empty_exception(const string & msg, unsigned int line) {  $/;"	f	class:stack_empty_exception
+stack_empty_exception	sll_stack.h	/^class stack_empty_exception {$/;"	c
+stack_empty_exception	vector_stack.h	/^		stack_empty_exception(const string & msg, unsigned int line) {  $/;"	f	class:stack_empty_exception
+stack_empty_exception	vector_stack.h	/^class stack_empty_exception {$/;"	c
+stack_tester_exception	sll_stack_tester.cpp	/^		stack_tester_exception (const string & msg, unsigned int line) : _msg(msg), _line(line) {}$/;"	f	class:stack_tester_exception
+stack_tester_exception	sll_stack_tester.cpp	/^class stack_tester_exception$/;"	c	file:
+stack_tester_exception	vector_stack_tester.cpp	/^		stack_tester_exception (const string & msg, unsigned int line) : _msg(msg), _line(line) {}$/;"	f	class:stack_tester_exception
+stack_tester_exception	vector_stack_tester.cpp	/^class stack_tester_exception$/;"	c	file:
+test_bracket_matching_multiple_types	part2_tester.cpp	/^void test_bracket_matching_multiple_types()$/;"	f
+test_bracket_matching_one_type	part2_tester.cpp	/^void test_bracket_matching_one_type()$/;"	f
+test_exceptions	sll_stack_tester.cpp	/^void test_exceptions()$/;"	f
+test_exceptions	vector_stack_tester.cpp	/^void test_exceptions()$/;"	f
+test_peek	sll_stack_tester.cpp	/^void test_peek()$/;"	f
+test_peek	vector_stack_tester.cpp	/^void test_peek()$/;"	f
+test_pop_all_elements	sll_stack_tester.cpp	/^void test_pop_all_elements()$/;"	f
+test_pop_all_elements	vector_stack_tester.cpp	/^void test_pop_all_elements()$/;"	f
+test_push_empty_size	sll_stack_tester.cpp	/^void test_push_empty_size()$/;"	f
+test_push_empty_size	vector_stack_tester.cpp	/^void test_push_empty_size()$/;"	f
+test_railway_1	part2_tester.cpp	/^void test_railway_1()$/;"	f
+test_railway_2	part2_tester.cpp	/^void test_railway_2()$/;"	f
+vector_stack	vector_stack.h	/^	vector_stack()$/;"	f	class:vector_stack
+vector_stack	vector_stack.h	/^	vector_stack(vector<T> &vec)$/;"	f	class:vector_stack
+vector_stack	vector_stack.h	/^class vector_stack$/;"	c
+what	part2_tester.cpp	/^		string what() const $/;"	f	class:part2_tester_exception
+what	sll_stack.h	/^		string what() {	$/;"	f	class:stack_empty_exception
+what	sll_stack_tester.cpp	/^		string what() const $/;"	f	class:stack_tester_exception
+what	vector_stack.h	/^		string what() {	$/;"	f	class:stack_empty_exception
+what	vector_stack_tester.cpp	/^		string what() const $/;"	f	class:stack_tester_exception
+~sll_stack	sll_stack.h	/^	~sll_stack()$/;"	f	class:sll_stack
+~vector_stack	vector_stack.h	/^	~vector_stack()$/;"	f	class:vector_stack
