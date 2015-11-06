@@ -1,0 +1,19 @@
+test_constructor passed.
+{1}
+{2,1,3,4}
+{2,6,1,3,4}
+{5,2,6,1,3,4}
+test_insert_and_output_and_get passed.
+test_in_list_and_expand passed.
+test_remove_and_empty passed.
+{101,102,103,104,105,106,107}
+test_remove_value passed.
+test_clear passed.
+stress_test passed.
+Attempting to sort the list {679,-3640,-917,1336,-3315,-4884,-4181,1560,4049,-4500}
+Sort successful.
+Attempting to sort a list of 10000 elements
+Sort successful. Total time: 0.354195 seconds
+sort_test passed.
+Passed: 8
+Part I complete.

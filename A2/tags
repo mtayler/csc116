@@ -1,0 +1,24 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+_line	linked_list_tester.cpp	/^		unsigned int _line;$/;"	m	class:list_tester_exception	file:
+_msg	linked_list_tester.cpp	/^		string _msg;$/;"	m	class:list_tester_exception	file:
+check_sorted	linked_list_tester.cpp	/^bool check_sorted(linked_list& l){$/;"	f
+clock_seconds	linked_list_tester.cpp	/^float clock_seconds(){$/;"	f
+convert_to_string	linked_list_tester.cpp	/^string convert_to_string(linked_list &l)$/;"	f
+list_tester_exception	linked_list_tester.cpp	/^		list_tester_exception (const string & msg, unsigned int line) : _msg(msg), _line(line) {}$/;"	f	class:list_tester_exception
+list_tester_exception	linked_list_tester.cpp	/^class list_tester_exception$/;"	c	file:
+main	linked_list_tester.cpp	/^int main ()$/;"	f
+remove_whitespace	linked_list_tester.cpp	/^string remove_whitespace(string s)$/;"	f
+sort_test	linked_list_tester.cpp	/^void sort_test(){$/;"	f
+stress_test	linked_list_tester.cpp	/^void stress_test()$/;"	f
+test_clear	linked_list_tester.cpp	/^void test_clear()$/;"	f
+test_constructor	linked_list_tester.cpp	/^void test_constructor()$/;"	f
+test_in_list_and_size	linked_list_tester.cpp	/^void test_in_list_and_size()$/;"	f
+test_insert_and_output_and_get	linked_list_tester.cpp	/^void test_insert_and_output_and_get()$/;"	f
+test_remove_and_empty	linked_list_tester.cpp	/^void test_remove_and_empty()$/;"	f
+test_remove_value	linked_list_tester.cpp	/^void test_remove_value()$/;"	f
+what	linked_list_tester.cpp	/^		string what() const $/;"	f	class:list_tester_exception
