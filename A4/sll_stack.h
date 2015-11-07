@@ -14,8 +14,6 @@
 
 using namespace std;
 
-std::ostream& os = std::cout;
-
 //
 // This exception will be used to indicate when invalid access to
 // an empty sll_stack occurs.

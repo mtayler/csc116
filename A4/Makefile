@@ -1,4 +1,4 @@
-CXXFLAGS=-Wall -Werror -pedantic
+CXXFLAGS=-Wall -Wextra -Werror -pedantic
 LDFLAGS=
 SOURCESVECTOR=vector_stack_tester.cpp
 SOURCESSLL=sll_stack_tester.cpp
@@ -21,5 +21,4 @@ part2: $(SOURCESPART2)
 
 clean:
 	rm -rf *.dSYM
-	rm -f $(EXECUTABLESLL)
-	rm -f $(EXECUTABLEVECTOR)
+	rm -f $(EXECUTABLEVECTOR) $(EXECUTABLESLL) $(EXECUTABLEPART2)

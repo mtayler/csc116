@@ -22,8 +22,7 @@ vector<int> train5 (railway5, railway5 + sizeof(railway5) / sizeof(int) );
 string res0[] = {"in->spur","in->spur","in->spur","in->spur","in->out",
 					"spur->out","spur->out","spur->out","spur->out"};
 string res1[] = {"in->spur","in->spur","in->out","spur->out","in->out","spur->out",
-					"in->out","in->spur","in->spur","in->spur","in->spur",
-					"in->out","spur->out","spur->out","spur->out","spur->out"};
+					"in->out"};
 string res5[] = {"in->spur","in->spur","in->spur","in->spur","in->out","in->out",
 					"spur->out","in->spur","in->out","spur->out","spur->out",
 					"spur->out","spur->out"};
@@ -127,6 +126,28 @@ void test_bracket_matching_multiple_types()
 }
 
 
+bool compare_instruction_lists(list<string> computed, list<string> reference){
+	list<string>::iterator c = computed.begin();
+	list<string>::iterator r = reference.begin();
+	while(c != computed.end() && r != reference.end()){
+		if (*r != *c){
+			//Allow "in->out" to be expanded to the two instructions "in->spur" and "spur->out"
+			if (*r == "in->out" && *c == "in->spur"){
+				c++;
+				if (c == computed.end() || *c != "spur->out")
+					return false;
+			}else{
+				return false;
+			}
+		}
+		r++;
+		c++;
+	}
+	if (c != computed.end() || r != reference.end())
+		return false;
+	return true;
+}
+
 void test_railway_1()
 {
 
@@ -137,31 +158,34 @@ void test_railway_1()
 	//Test trivial success case
 	result = railway(train0, instructions);
 	
-	//cout<<"RESULT 0 is: "<< result <<endl;
-	//print_switch_ops(instructions);
+	/* cout<<"RESULT 0 is: "<< result <<endl; */
+	/* print_switch_ops(instructions); */
+	
 	if (!result)
 		throw part2_tester_exception(__func__,__LINE__);
 	
-	if (instructions != result0)
+	if (!compare_instruction_lists(instructions,result0))
 		throw part2_tester_exception(__func__,__LINE__);	
 	
 	//Test non-trivial success case
+	instructions.clear();
 	result = railway(train1, instructions);
 	
-	//cout<<"RESULT 1 is: "<< result <<endl;
-	//print_switch_ops(instructions);
+	/* cout<<"RESULT 1 is: "<< result <<endl; */
+	/* print_switch_ops(instructions); */
+	
 	if (!result)
 		throw part2_tester_exception(__func__,__LINE__);
 		
-	if (instructions != result1)
+	if (!compare_instruction_lists(instructions,result1))
 		throw part2_tester_exception(__func__,__LINE__);	
 		
 	//Test non-success case -- impossible with one spur
 	instructions.clear();
 	result = railway(train2, instructions);
 	
-	//cout<<"RESULT 2 is: "<< result <<endl;
-	//print_switch_ops(instructions);
+	/* cout<<"RESULT 2 is: "<< result <<endl; */
+	/* print_switch_ops(instructions); */
 	
 	if (result)
 		throw part2_tester_exception(__func__,__LINE__);
@@ -185,6 +209,7 @@ void test_railway_2()
 	
 	//cout<<"RESULT 3 is: "<< result <<endl;
 	//print_switch_ops(instructions);
+	
 	if (result)
 		throw part2_tester_exception(__func__,__LINE__);
 		
@@ -197,6 +222,7 @@ void test_railway_2()
 	
 	//cout<<"RESULT 4 is: "<< result <<endl;
 	//print_switch_ops(instructions);
+	
 	if (result)
 		throw part2_tester_exception(__func__,__LINE__);
 
@@ -209,10 +235,11 @@ void test_railway_2()
 	
 	//cout<<"RESULT 5 is: "<< result <<endl;
 	//print_switch_ops(instructions);
+	
 	if (!result)
 		throw part2_tester_exception(__func__,__LINE__);
 
-	if (instructions != result5)
+	if (!compare_instruction_lists(instructions,result5))
 		throw part2_tester_exception(__func__,__LINE__);		
 		
 	cout << __func__ << " passed." << endl;
