@@ -24,7 +24,7 @@ class filtered_message
 {
 public:
     filtered_message(){
-        ok = true
+        ok = true;
     }
     filtered_message( const string & t, bool b_ok ) {
         text = t;

@@ -6,29 +6,23 @@
 
 #include <iostream>
 
+class queue_empty_exception {};
 
-// TODO: Add empty class "queue_empty_exception"
-
-
-// TODO: Make class "node" a template with one parameter.
-
-// Replace all occurrences of "int" that represent the stored value
-// with the template parameter type.
-
+template <typename T>
 class node
 {
 public:
-    int value;
-    node *prev;
-    node *next;
+    T value;
+    node<T>  *prev;
+    node<T>  *next;
 
-    node()
+    node<T> ()
     {
         value = 0;
         next = 0;
         prev = 0;
     }
-    node(int desired_value, node *previous_node, node *next_node )
+    node<T> (T desired_value, node<T>  *previous_node, node<T>  *next_node )
     {
         value = desired_value;
         prev = previous_node;
@@ -37,34 +31,27 @@ public:
 };
 
 
-// TODO: Rename class "int_queue" to "queue"
-// and make it a template with one parameter.
-
-// Replace all occurences of "int" that represent
-// stored values with template parameter type.
-
-// Replace all occurences of "node" with an instance of the node template.
-
-class int_queue
+template <typename T>
+class queue
 {
 private:
-    node *m_head;
-    node *m_tail;
+    node<T>  *m_head;
+    node<T>  *m_tail;
     int m_size;
 
 public:
-    int_queue()
+    queue()
     {
         m_head = 0;
         m_tail = 0;
         m_size = 0;
     }
 
-    ~int_queue()
+    ~queue()
     {
         while(m_head)
         {
-            node *n = m_head;
+            node<T>  *n = m_head;
             m_head = m_head->next;
             delete n;
         }
@@ -75,12 +62,14 @@ public:
         return m_size;
     }
 
-    int dequeue()
+    T dequeue()
     {
-        // TODO:
         // Throw an instance of class "queue_empty_exception" if queue empty.
+		if (this->size() == 0) {
+			throw queue_empty_exception();
+		}
 
-        node *removed_node = m_head;
+        node<T>  *removed_node = m_head;
 
         m_head = m_head->next;
 
@@ -89,7 +78,7 @@ public:
         else
             m_tail = 0;
 
-        int removed_value = removed_node->value;
+        T removed_value = removed_node->value;
         delete removed_node;
         --m_size;
 
@@ -98,9 +87,9 @@ public:
 
     // NOTE: Use a const reference as type of method parameter
     // to avoid unnecessary copying of class instances.
-    void enqueue( int value )
+    void enqueue( T value )
     {
-        m_tail = new node(value, m_tail, 0);
+        m_tail = new node<T> (value, m_tail, 0);
         if (m_tail->prev)
             m_tail->prev->next = m_tail;
         if (!m_head)
@@ -109,10 +98,10 @@ public:
     }
 
     friend
-    std::ostream & operator<< ( std::ostream & stream, const int_queue & q )
+    std::ostream & operator<< ( std::ostream & stream, const queue & q )
     {
         stream << "{";
-        node *n = q.m_head;
+        node<T>  *n = q.m_head;
         while(n)
         {
             stream << n->value;

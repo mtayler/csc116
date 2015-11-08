@@ -12,7 +12,6 @@ using namespace std;
 #else
 #include <chrono>
 #include <thread>
-using namespace chrono;
 #endif
 
 vector<string> & operator<< (vector<string> & v, const string & elem)
@@ -90,7 +89,7 @@ void simulation::run()
 #ifdef _WIN32
         Sleep((DWORD) sleep_ms);
 #else
-        milliseconds sleep_time(sleep_ms);
+		chrono::milliseconds sleep_time(sleep_ms);
         this_thread::sleep_for(sleep_time);
 #endif
         time += sleep_ms;
