@@ -53,8 +53,6 @@ void test_push_empty_size()
 		throw stack_tester_exception(__func__,__LINE__);
 	
 	s1<<s;
-	std::cout << "Printing s: " << s << std::endl;
-	std::cout.flush();
 	if (s1.str() != "{TOP_100,90,80,70,60,50,40,30,20,10}")
 		throw stack_tester_exception(__func__,__LINE__);
 
